@@ -1,0 +1,1 @@
+0 0 * * 0,5 go run /home/ec2-user/go/banco.go

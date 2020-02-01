@@ -1,0 +1,18 @@
+mudar status de que cabeleireiro esta disponivel( se está no trabalho ou não- fica online)
+
+mandar notificação quando alguem desmarcar horario
+
+mandar informativos sobre quantidade de vagas para agendamento disponiveis ( OU PARA USUARIOS PROXIMOS AO SALÃO)
+
+quantidade de pessoas esperando
+
+pontos por serviços
+
+carta de credito
+-------------------
+
+quando logar buscar 
+- usuario(salvar algumas info no shared- topicoNotificacao)
+-tipo de usuario
+- 
+

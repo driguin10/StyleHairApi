@@ -1,0 +1,4 @@
+por scrollview nos layout
+por para pegar posição atual do usuario que cadastra o salao caso nao escolha nenhuma posicao
+
+só pode cadastrar salao se possuir cadastro de usuario

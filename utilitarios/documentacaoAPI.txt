@@ -1,0 +1,183 @@
+----codigo---|---- menssagem ----|------- tipo --------- | ---- retorno ----
+-------------|-------------------|---------------------- |------------------
+     200     |        01         |         ok            |     classe
+     204     |        01         |         ok            |     nenhum
+     400     |        01         |   não encontrado      |     nenhum
+     400     |        02         | parametros incorretos |     nenhum
+     400     |        03         |     erro ao salvar    |     nenhum
+     400     |        04         |     erro ao editar    |     nenhum
+     400     |        05         |     erro ao excluir   |     nenhum
+     401     |        01         |     não autorizado    |     nenhum
+     403     |        01         |       já existe       |     nenhum
+-----------------------------------------------------------------------------
+
+==========================================================
+header
+enviar chave da API pelo parametro HTTP_apiKey
+
+endPoint
+enviar {versao} da API(http://site/{versao}/....)
+
+==========================================================
+
+|--------------------------LOGIN--------------------------|
+|=========================================================|
+**efetuar login**
+endPoint: /{versao}/logins/
+parametros: email,senha
+
+retorno:
+login encontrado = codigo 200 menssagem 01, corpo(dados login)
+login não encotrado = codigo 400 menssagem 01 
+parametros incorretos = codigo 400 menssagem 02
+===========================================================
+**salvar login**
+endPoint: /{versao}/logins/salvar/
+parametros:email, senha
+
+retorno:
+usuario já existe = codigo 403 menssagem 01
+login salvo = codigo 204 menssagem 01
+erro ao salvar = codigo 400 menssagem 03
+parametros incorretos = codigo 400 menssagem 02
+============================================================
+**editar login**
+endPoint: /{versao}/logins/editar/
+parametros:email, senhaAtual , novaSenha
+
+retorno:
+usuario já existe = codigo 403 menssagem 01
+editado = codigo 204 menssagem 01
+erro ao editar = codigo 400 menssagem 04
+senha incorreta = codigo 400 menssagem 06
+parametros incorretos = codigo 400 menssagem 02
+============================================================
+[--resetar senha--(solicita redefinição de senha)]
+endPoint: /{versao}/logins/reset/
+parametros: email
+
+retorno
+salvo = codigo 204 menssagem 01
+erro ao salvar = codigo 400 menssagem 03
+email não existe =codigo 400 menssagem 06
+parametros incorretos = codigo 400 menssagem 02
+
+=============================================================
+**alterar senha**
+endPoint:/{versao}/logins/editarSenha/
+parametros: email,senhaGerada, novaSenha
+
+retorno
+editado = codigo 204 menssagem 01
+erro ao editar = codigo 400 menssagem 04
+codigo de redefinicao incorreto = codigo 400 menssagem 07
+email nao encontrado = codigo = 400 menssagem 06
+parametros incorretos = codigo 400 menssagem 02
+=============================================================
+
+
+
+
+|---------------------- usuarios ---------------------------|
+|===========================================================|
+**salvar usuario**
+endPoint:/{versao}/usuarios/salvar/
+parametros: idLogin,linkImagem,nome,apelido,sexo,dataNascimento,
+    telefone,cep,endereco,numero,bairro,estado,cidade,obs
+
+retorno
+salvo = codigo 204 menssagem 01
+erro ao salvar = codigo 400 menssagem 03
+parametros incorretos = codigo 400 menssagem 02
+=============================================================
+**editar usuario**
+endPoint:/{versao}/usuarios/editar/
+parametros: idLogin,linkImagem,nome,apelido,sexo,dataNascimento,
+    telefone,cep,endereco,numero,bairro,estado,cidade,obs
+
+retorno
+editado = codigo 204 menssagem 01
+erro ao editar = codigo 400 menssagem 04
+parametros incorretos = codigo 400 menssagem 02
+=============================================================
+**excluir usuario**
+endPoint:/{versao}/usuarios/deletar/{idLogin}
+parametros: 
+
+retorno
+editado = codigo 204 menssagem 01
+erro ao editar = codigo 400 menssagem 05
+parametros incorretos = codigo 400 menssagem 02
+=============================================================
+**pegar usuario**
+endPoint:/{versao}/usuarios/{idLogin}
+parametros: 
+
+retorno
+editado = codigo 204 menssagem 01
+não encontrado = codigo 400 menssagem 01
+parametros incorretos = codigo 400 menssagem 02
+=============================================================
+
+
+|-------------------- SALÕES -------------------------------|
+|===========================================================|
+**salvar salão**
+endPoint:/{versao}/saloes/salvar/
+parametros: idUsuario,nome,endereco,numero,complemento,cep
+  	,bairro,estado,cidade,telefone1,telefone2,cnpj,email,sobre
+  	,horaIni,horaFim,agendamento,uploaded_file,mine_file.
+
+retorno
+salvo = codigo 204 menssagem 01
+erro ao salvar = codigo 400 menssagem 03
+parametros incorretos = codigo 400 menssagem 02
+=============================================================
+endPoint:/{versao}/saloes/editar/
+parametros: idUsuario,nome,endereco,numero,complemento,cep
+  	,bairro,estado,cidade,telefone1,telefone2,cnpj,email,sobre
+  	,horaIni,horaFim,agendamento,uploaded_file,mine_file,imagemAntiga.
+
+retorno
+editado = codigo 204 menssagem 01
+erro ao editar = codigo 400 menssagem 04
+parametros incorretos = codigo 400 menssagem 02
+==============================================================
+endPoint:/{versao}/saloes/{id}
+parametros: 
+
+retorno
+encontrado = codigo 200 menssagem 01, corpo = classe salão
+não encontrado = codigo 400 menssagem 01
+parametros incorretos = codigo 400 menssagem 02
+
+
+|-------------------- FUNCIONARIOS -------------------------|
+|===========================================================|
+**salvar funcionario**
+endPoint:/{versao}/funcionarios/salvar/
+parametros: idSalao ,idUsuario.
+
+retorno
+salvo = codigo 204 menssagem 01
+erro ao salvar = codigo 400 menssagem 03
+parametros incorretos = codigo 400 menssagem 02
+============================================================
+**excluir funcionario**
+endPoint:/{versao}/funcionarios/deletar/{id}
+parametros: idSalao ,idUsuario.
+
+retorno
+excluido = codigo 204 menssagem 01
+erro ao excluir = codigo 400 menssagem 05
+parametros incorretos = codigo 400 menssagem 02
+============================================================
+**editar funcionario**
+endPoint:/{versao}/servi_saloes/editar/
+parametros: idServicoSalao,tipo,sexo,valor.
+
+retorno
+editado = codigo 204 menssagem 01
+erro ao editar = codigo 400 menssagem 04
+parametros incorretos = codigo 400 menssagem 02
+============================================================
